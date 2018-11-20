@@ -228,18 +228,18 @@ master3.GUID.internal
 
 [nodes]
 ## These are the masters
-master1.3906.internal openshift_node_group_name='node-config-master' openshift_node_problem_detector_install=true
-master2.3906.internal openshift_node_group_name='node-config-master' openshift_node_problem_detector_install=true
-master3.3906.internal openshift_node_group_name='node-config-master' openshift_node_problem_detector_install=true
+master1.GUID.internal openshift_node_group_name='node-config-master' openshift_node_problem_detector_install=true
+master2.GUID.internal openshift_node_group_name='node-config-master' openshift_node_problem_detector_install=true
+master3.GUID.internal openshift_node_group_name='node-config-master' openshift_node_problem_detector_install=true
 
 ## These are infranodes
-infranode1.3906.internal openshift_node_group_name='node-config-infra' openshift_node_problem_detector_install=true
-infranode2.3906.internal openshift_node_group_name='node-config-infra' openshift_node_problem_detector_install=true
+infranode1.GUID.internal openshift_node_group_name='node-config-infra' openshift_node_problem_detector_install=true
+infranode2.GUID.internal openshift_node_group_name='node-config-infra' openshift_node_problem_detector_install=true
 
 ## These are regular nodes
-node1.3906.internal openshift_node_group_name='node-config-compute' openshift_node_problem_detector_install=true openshift_node_labels="{'client':'alpha', 'cluster': 'GUID'}"
-node2.3906.internal openshift_node_group_name='node-config-compute' openshift_node_problem_detector_install=true openshift_node_labels="{'client':'beta', 'cluster': 'GUID'}"
-node3.3906.internal openshift_node_group_name='node-config-compute' openshift_node_problem_detector_install=true openshift_node_labels="{'client':'common', 'cluster': 'GUID'}"
+node1.GUID.internal openshift_node_group_name='node-config-compute' openshift_node_problem_detector_install=true openshift_node_labels="{'client':'alpha', 'cluster': 'GUID'}"
+node2.GUID.internal openshift_node_group_name='node-config-compute' openshift_node_problem_detector_install=true openshift_node_labels="{'client':'beta', 'cluster': 'GUID'}"
+node3.GUID.internal openshift_node_group_name='node-config-compute' openshift_node_problem_detector_install=true openshift_node_labels="{'client':'common', 'cluster': 'GUID'}"
 
 [nfs]
 support1.GUID.internal openshift_hostname=support1.GUID.internal
