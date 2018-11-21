@@ -74,8 +74,17 @@
       script: /root/ocp_advanced_deployment_homework/scripts/pvs_10Gsize.sh
 
 - name: Create all PVs from definitions files
+  hosts: localhost
+  tasks:
+    - name: execute the pv files
+      shell: cat /root/pvs/* | oc create -f -
 
 - name: Fix NFS Persistent Volume Recycling
+  hosts: nodes
+  tasks: 
+    - name: docker pull recycler
+      shell: docker pull registry.access.redhat.com/openshift3/ose-recycler:latest
+      shell: docker tag registry.access.redhat.com/openshift3/ose-recycler:latest registry.access.redhat.com/openshift3/ose-recycler:v3.9.14
 
 - name: Smoke Test
 
