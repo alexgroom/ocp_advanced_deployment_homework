@@ -78,7 +78,8 @@
   tasks:
     - name: execute the pv files
       shell: cat /root/pvs/* | oc create -f -
-
+      shell: oc get pv 
+      
 - name: Fix NFS Persistent Volume Recycling
   hosts: nodes
   tasks: 
@@ -87,22 +88,27 @@
       shell: docker tag registry.access.redhat.com/openshift3/ose-recycler:latest registry.access.redhat.com/openshift3/ose-recycler:v3.9.14
 
 - name: Smoke Test
+  hosts: localhost
+  tasks:
+    - name: create mongo project and app
+    shell: oc new-project smoke-test
+    shell: oc new-app nodejs-mongo-persistent
 
-- name: Jenkins Setup
+-- name: Jenkins Setup
   hosts: localhost
   tasks:
     - name: jenkins setup
       script: ???
 
-- name: HPA configuration on production deployment of openshift-tasks
+-- name: HPA configuration on production deployment of openshift-tasks
   hosts: localhost
   tasks:
 
-- name: Creation of users for Alpha and Beta clients
+-- name: Creation of users for Alpha and Beta clients
 
-- name: Assigning labels to the users according to its group
+-- name: Assigning labels to the users according to its group
 
-- name: Setup the environment for Alpha and Beta clients
+-- name: Setup the environment for Alpha and Beta clients
 
 
   
