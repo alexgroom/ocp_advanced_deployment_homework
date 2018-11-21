@@ -13,7 +13,9 @@
 
 - name: Verify NFS Shared Volumes on Hosts
   hosts: nfs
-  tasks:
+  tasks: 
+    - name: export fs
+      shell: exportfs
 
 - name: Install packages and config auth
   hosts: localhost
@@ -21,8 +23,7 @@
     - name: required packages are present
       yum:
         name:
-          - ????
-          - ????
+          - atomic-openshift-clients
         state: present
 
 - name: Generate Inventory Hosts File
@@ -32,16 +33,19 @@
       script: /root/ocp_advanced_deployment_homework/scripts/generate_inventory.sh
 
 - name: Execute the openshift-ansible prerequisites
-  import_playbook: ???
+  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/prerequisites.yml
 
 - name: Execute the openshift-ansible Deployer
-  import_playbook: ???
+  import_playbook: /usr/share/ansible/openshift-ansible/playbooks/deploy_cluster.yml
 
 - name: Verify OpenShift Cluster
   hosts: masters[0]
   tasks:
-    - name: copy the .kube directory from master1 to your bastion
-    ????
+    - name: copy the kube comnfig file
+      fetch: 
+        src: /root/.kube/config 
+        dest: /root/.kube/config 
+        flat: yes
 
 - name: Post installation configuration
   hosts: localhost
@@ -53,14 +57,21 @@
   hosts: nfs
   tasks:
     - name:
-      script: ????
+      script: /root/ocp_advanced_deployment_homework/scripts/create_pvs.sh 
     - name: Restarting NFS Server...
       shell: systemctl restart nfs-server
 
 - name: Create 25 definitions files for PVs 5G size
   hosts: localhost
+  tasks:
+    - name: pvs 5G script
+      script: /root/ocp_advanced_deployment_homework/scripts/pvs_5Gsize.sh
 
 - name: Create 25 definitions files for PVs 10G size
+  hosts: localhost
+  tasks:
+    - name: pvs 10G script
+      script: /root/ocp_advanced_deployment_homework/scripts/pvs_10Gsize.sh
 
 - name: Create all PVs from definitions files
 
@@ -85,4 +96,4 @@
 - name: Setup the environment for Alpha and Beta clients
 
 
-  ....
+  
