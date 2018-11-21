@@ -56,7 +56,7 @@
 - name: Create PVs for Users
   hosts: nfs
   tasks:
-    - name:
+    - name: Execute create_pvs script
       script: /root/ocp_advanced_deployment_homework/scripts/create_pvs.sh 
     - name: Restarting NFS Server...
       shell: systemctl restart nfs-server
