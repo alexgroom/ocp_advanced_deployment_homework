@@ -20,14 +20,14 @@ containerized=false
 openshift_disable_check="memory_availability"
 
 # Default node selectors
-osm_default_node_selector='client=common'
-openshift_hosted_infra_selector="env=infra"
+#osm_default_node_selector='client=common'
+#openshift_hosted_infra_selector="env=infra"
 
 openshift_image_tag=v3.11
 openshift_release=3.11
 
 # Node Groups
-openshift_node_groups=[{'name': 'node-config-/ansib;e/master', 'labels': ['node-role.kubernetes.io/master=true']}, {'name': 'node-config-infra', 'labels': ['node-role.kubernetes.io/infra=true']}, {'name': 'node-config-compute', 'labels': ['node-role.kubernetes.io/compute=true']}]
+#openshift_node_groups=[{'name': 'node-config-/ansib;e/master', 'labels': ['node-role.kubernetes.io/master=true']}, {'name': 'node-config-infra', 'labels': ['node-role.kubernetes.io/infra=true']}, {'name': 'node-config-compute', 'labels': ['node-role.kubernetes.io/compute=true']}]
 # Configure node kubelet arguments. pods-per-core is valid in OpenShift Origin 1.3 or OpenShift Container Platform 3.3 and later. -> These  need to go into the above
 # openshift_node_kubelet_args={'pods-per-core': ['10'], 'max-pods': ['250'], 'image-gc-high-threshold': ['85'], 'image-gc-low-threshold': ['75']}
 
@@ -97,8 +97,8 @@ openshift_master_htpasswd_file=/root/htpasswd.openshift
 
 openshift_hosted_router_replicas=2
 
-oreg_auth_user=11521502|ocpadvdepfab
-oreg_auth_password=eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiJmMDY0MmMwNGI5ZWQ0ZmQ5OTNlNWI4YzJlNWEzZDVjYyJ9.l-SLiJl-YX0gT_g6wgUwK6bzPIqmteiQlJ3cX_DT_ynNU1xFiSstJOvCFkYicdTJE4kSMPaN4W7Em9IFntVA44O6--8tfgydAzrFVqQj3C5x3EXkEG8Ig6uQCsnYmqFTa5GiQcGn8S3JoN3KFIDUgDNZ4otxGrYpsacHseqa05H6vneSmYj1_IoYs75OnfJ9HD9xjybjrPJp93AkUZcy2l8AF1qZ1F_57EyitaRtzyXI4wYb8i6NuIJCxZ-qkaCb1ONnGHGao7p7ycjLUheHelR1AoK0WR-lWcjkIXWWQ-PszpBVW_3aPbkwMePdgqcWUcbHODHFmHS8SfR4sM6E97uHdwe8Fr-4GoXXzNkjeeuNgu_o0FJyL8Ima8Cl6UYh8A-22FDZp5hq2Ij23RxsljUJu94l1ggPMUjF88p4PO2SqnYgpTYUaING3m8tvD6_omgXpjfnAUQFL-oK9axGHPzvcLDpQIKvm-CM7DvTKOeJoN9hrJ7_nudv2R5X7aiYzbW5rQQhWu0e-LN7inDIEbLf7pHyWHyyZGVGABGenXZREIx5r-2Te6a4QPcbA_ZuYBCtWLUpJIYha7UhtPfZvjDiPAbwCc65dSxeRkoPHvh_x7lOIACZBnMaXbH3_3mCKJ_XZAOlOiWFeEbXzIQx2fSz5N_dLOOeNtlF_uavrgY
+oreg_auth_user=11759639|ocphomeworkafg
+oreg_auth_password=eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiI3ZDg0M2M1MzFiNzQ0N2Y1YTU4ZDUzZmE3MWM4MjBjMSJ9.foCOLSl-7CDRGSsz8KzN1ngRSPPCPgO1x5ZFvQVz_fA08rNiMHWNy6sHykTU0JuZGh8AuMpF0RYjtEcyBGVBzM8eNMXs9HeY_pCN8m9d4Wr0tcyVZjSWrXk6QMgvqfB90zSjI98lZApK2PLAqno3QyFS8vN-d4HCg1lyRGtVwl-nnwAqxmqS7q0w_jhc9HZK9AYgMIjH-Apl9Pn3WV1OYgltgXtzVt3WNXQiNqUEYjyCv1-RBCiD706kj6ndOV8jMPKye5oTsGNlh8Cih6JcMJzLxwFlwZk0qQZhRXSZgTjtYVks3d6XYg0dtimFQ3FRgWzY4Of5cdkagi7g-D3BuCfttN_B6EBNz1gwQ2QrqGtpwpyAwRZnO_qZF2VbL0jkB9FjlKasbRIMxMkgBLZjxiL1-g3HA27IsGvHXBOYUgSDm7zGcM6ELPW50dma6RaIHPVsNF7RgWfoknu9jm_V8l9pxrk-ibPq7hb0_3-aLlbFkh8TZe8y4KgyCWJ1bJjF52yNo3H7Ijw6bvA-wbn5S_fQU07MonBJbexH9OYeD1Hk2AGm78N-Dt6C1Xev5rGBEQFvdJ0sF7lAEvwzqeOS5-CXcrtLOqq550Jes9hnt70DODE9CR0_2-8SwuWgdde0QnRbN11RLelCFeAYhOo9f4MEwtWpgGSD_7zvus9Y_dM
 
 
 # openshift_hosted_router_certificate={"certfile": "/path/to/router.crt", "keyfile": "/path/to/router.key", "cafile": "/path/to/router-ca.crt"}
