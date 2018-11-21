@@ -78,6 +78,7 @@
   tasks:
     - name: execute the pv files
       shell: cat /root/pvs/* | oc create -f -
+    - name: get those pvs
       shell: oc get pv 
       
 - name: Fix NFS Persistent Volume Recycling
@@ -85,13 +86,15 @@
   tasks: 
     - name: docker pull recycler
       shell: docker pull registry.access.redhat.com/openshift3/ose-recycler:latest
+    - name: docker pull 3.9.14 recycler
       shell: docker tag registry.access.redhat.com/openshift3/ose-recycler:latest registry.access.redhat.com/openshift3/ose-recycler:v3.9.14
 
 - name: Smoke Test
   hosts: localhost
   tasks:
-    - name: create mongo project and app
+    - name: create mongo project
       shell: oc new-project smoke-test
+    - name: create mongo app
       shell: oc new-app nodejs-mongo-persistent
 
 #- name: Jenkins Setup
