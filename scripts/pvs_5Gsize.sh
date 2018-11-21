@@ -2,7 +2,7 @@
 
 export GUID=`hostname|awk -F. '{print $2}'`
 mkdir -p /root/pvs
-export volsize="10Gi"
+export volsize="5Gi"
 for volume in pv{1..25} ; do
 cat << EOF > /root/pvs/${volume}
 {
