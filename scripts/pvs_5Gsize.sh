@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 export GUID=`hostname|awk -F. '{print $2}'`
-
-export volsize="5Gi"
-mkdir /root/pvs
+mkdir -p /root/pvs
+export volsize="10Gi"
 for volume in pv{1..25} ; do
 cat << EOF > /root/pvs/${volume}
 {
