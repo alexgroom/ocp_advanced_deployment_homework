@@ -93,9 +93,7 @@
   hosts: localhost
   tasks:
     - name: create mongo project
-      shell: oc new-project smoke-test
-    - name: create mongo app
-      shell: oc new-app nodejs-mongo-persistent
+      script: /root/ocp_advanced_deployment_homework/scripts/nodejs_mongo_app.sh
 
 #- name: Jenkins Setup
 #  hosts: localhost
