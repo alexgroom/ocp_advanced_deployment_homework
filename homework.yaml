@@ -105,6 +105,16 @@
 #  hosts: localhost
 #  tasks:
 
+- name: Set node labels
+  hosts: localhost
+  tasks:
+    - name:
+      shell: oc label node node1.GUID.internal alpha=true
+    - name:
+      shell: oc label node node2.GUID.internal beta=true
+    - name:
+      shell: oc label node node3.GUID.internal common=true
+
 #- name: Creation of users for Alpha and Beta clients
 
 #- name: Assigning labels to the users according to its group
