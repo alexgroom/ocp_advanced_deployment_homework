@@ -108,7 +108,7 @@
 - name: Set node labels
   hosts: localhost
   tasks:
-    - name:
+    - name: Call set labels script
       script: /root/ocp_advanced_deployment_homework/scripts/set_labels.sh
 
 #- name: Creation of users for Alpha and Beta clients
