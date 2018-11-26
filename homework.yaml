@@ -109,11 +109,7 @@
   hosts: localhost
   tasks:
     - name:
-      shell: oc label node node1.$GUID.internal alpha=true
-    - name:
-      shell: oc label node node2.$GUID.internal beta=true
-    - name:
-      shell: oc label node node3.$GUID.internal common=true
+      script: /root/ocp_advanced_deployment_homework/scripts/set_labels.sh
 
 #- name: Creation of users for Alpha and Beta clients
 
