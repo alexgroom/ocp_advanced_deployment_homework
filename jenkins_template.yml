@@ -32,7 +32,7 @@ spec:
            {
            echo "Running Integration Tests"
            // wait for things to come up
-           sleep 5
+           sleep 15
     
            // not much status checking going on here, but its painful doing this from sh/curl hack
            // should be doing this from Java or Groovy UrlConnection
