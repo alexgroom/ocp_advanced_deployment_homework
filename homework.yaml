@@ -95,15 +95,11 @@
     - name: create mongo project
       script: /root/ocp_advanced_deployment_homework/scripts/nodejs_mongo_app.sh
 
-#- name: Jenkins Setup
-#  hosts: localhost
-#  tasks:
-#    - name: jenkins setup
-#      script: ???
-
-#- name: HPA configuration on production deployment of openshift-tasks
-#  hosts: localhost
-#  tasks:
+- name: Jenkins Setup Pipeline and build tasks and then HPA on tasks-prod
+  hosts: localhost
+  tasks:
+    - name: jenkins setup
+      script: /root/ocp_advanced_deployment_homework/scripts/jenkins_build.sh
 
 - name: Set node labels
   hosts: localhost
