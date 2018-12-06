@@ -119,9 +119,19 @@
     - name: Call set labels script
       script: /root/ocp_advanced_deployment_homework/scripts/set_labels.sh
 
-#- name: Creation of users for Alpha and Beta clients
+#- name create users 
 
-#- name: Assigning labels to the users according to its group
+- name: Assigning labels to the users according to its group
+  hosts: localhost
+  tasks:
+    - name: Add amy
+      shell: oc label user/amy client=alpha
+    - name: Add Andrew
+      shell: oc label user/andrew client=alpha
+    - name: Add betty
+      shell: oc label user/betty client=beta
+    - name: Add brian
+      shell: oc label user/brian client=beta    
 
 #- name: Setup the environment for Alpha and Beta clients
 # oc patch dc/<dcname> -p '{"spec":{"template":{"spec":{"nodeSelector":{"alpha":"true"}}}}}'
