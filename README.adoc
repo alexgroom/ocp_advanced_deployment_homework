@@ -1,4 +1,4 @@
-= OpenShift Container Platform - Advanced Deployment - Homework Template
+= OpenShift Container Platform - Advanced Deployment - Homework Assignment
 
 
 
@@ -102,6 +102,26 @@ Self provisioning has been switched off for security reasons and two projects pr
 
 Logging into the web console say as: amy/amy will show the Alpha project, and similarly from brian/brian the beta project. These users only have rights within their pre-created project.
 
+== 3. Manifest
+
+The files governing the installation are as follows:
+
+hosts - ansible definition file for Openshift installation
+
+homework.yaml - (My first ever) Ansible script driving the installation and subsequent deployment of projects and apps
+
+jenkins_template.yaml - Defines the jenkins Pipeline 
+
+
+Various scripts in ./scripts to execute dense collection of oc commands:
+
+jenkins_build.sh - sets up the build projects and pipeline conditions
+
+pvs scripts - create pvs as required
+
+nodejs_mongo_app.sh - installs the smoke test app and tests it
+
+set_labels.sh - set node labels and configures the environment for Alpha and Beta
 
 
 
