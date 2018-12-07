@@ -68,13 +68,13 @@ echo '{
                 "default": {
                     "cpu": "300m",
                     "memory": "200Mi"
-                }
+                },
                 "defaultRequest": {
                     "cpu": "200m",
                     "memory": "100Mi"
-                }
+                },
                 "maxLimitRequestRatio": {
-                    cpu: "10"
+                    "cpu": "10"
                 }
 
             }
