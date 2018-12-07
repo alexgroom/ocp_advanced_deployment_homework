@@ -1,19 +1,107 @@
 = OpenShift Container Platform - Advanced Deployment - Homework Template
 
-Use the files in this repo to guide you on your way to creating
-a fully automated deployment of OpenShift.
-
-The person grading the assignment will 
-
-* launch a new homework environment
-* clone a repo
-* execute a command
-* examine the output through log files
-* exmaine the deployed OpenShift to ensure that all aspects of the homework were 
-deployed properly.
 
 
-Good luck!  And try to have fun!
+== 1. Business Use Case
+Clearly all the consultants and OCP SSAs were on holiday this week since the AppDev SSA has been assigned to a telecommunications company called MitziCom! 
+
+MitziCom provides hosting and cloud services to a variety of clients, from medium size companies to enterprise giants.
+
+MitziCom has asked you to lead a 30-40 hour proof-of-concept (POC) using Red Hat OpenShift Container Platform. The purpose of the POC is to determine the feasibility of using Red Hat OpenShift Container Platform as a target for internal and client workloads.
+
+== 2. POC Requirements
+MitziCom management required that all of the items listed in these subsections are included in the POC.
+
+Full Automation
+MitziCom will be deploying your work onto their own systems. Management wants to ease the burden on SREs, so they must be able to deploy your work on their infrastructure in an automated fashion in a single command.
+
+Automation is acheived by cloning this repo and then executing the following commands from the Bastion host of the proposed cluster:
+
+----
+  # sudo -i
+  # git clone https://github.com/alexgroom/ocp_advanced_deployment_homework.git
+  # cd ocp_advanced_deployment_homework
+  # ansible-playbook -f 20 homework.yaml
+----
+
+Below are the requirements met by this single playlist deployment
+
+== 2.1. Basic Requirements
+Ability to authenticate at the master console
+
+Registry has storage attached and working
+
+Router is configured on each infranode
+
+PVs of different types are available for users to consume
+
+And then smoke tested using a simple app (nodejs-mongo-persistent)
+
+== 2.2. HA Requirements
+There are three masters working
+
+There are three etcd instances working
+
+There is a load balancer to access the masters called loadbalancer.$GUID.$DOMAIN
+
+There is a load balancer/DNS for both infranodes called *.apps.$GUID.$DOMAIN
+
+There are at least two infranodes, labeled env=infra
+
+== 2.3. Environment Configuration
+NetworkPolicy is configured and working with projects isolated by default
+
+Aggregated logging is configured and working
+
+Metrics collection is configured and working
+
+Router and Registry Pods run on Infranodes
+
+Metrics and Logging components run on Infranodes
+
+Service Catalog, Template Service Broker, and Ansible Service Broker are all working
+
+== 2.4. CICD Workflow
+Jenkins pod is running in a project called cicd-dev with a persistent volume
+
+Jenkins deploys openshift-tasks app
+
+Jenkins OpenShift plugin is used in the buildconfig to create a CICD workflow
+
+tasks-build is the project for building. Promotion occurs between projects tasks-dev, tasks-test, and tasks-prod.
+
+After the image build phase the build app is deployed and its route tested before progressing with the tagging and promotion.
+
+An HPA called tasks-hpa is configured and working on production deployment of openshift-tasks in project tasks-prod.
+
+Builds are automatically promoted from build to dev, test and prod to allow the Jenkins pipeline to complete without human intervention, but a block can be easily uncommented by amending the jenkins pipeline in jenkins_template.yaml 
+----
+//input "Deploy to production?"
+----
+
+and re-running the jenkins_clean.sh and jenkins_build.sh scripts. Alternatively the pipeline can be edited directly from the Openshift console under cicd-dev Pipelines.
+
+== 2.5. Multitenancy
+Multiple Clients (customers) created
+
+Clients will be named Alpha Corp and Beta Corp (client=alpha, client=beta), and a "client=common" for unspecified customers.
+
+Alpha Corp will have two users, Amy and Andrew
+
+Beta Corp will have two users, Brian and Betty
+
+Common will be for all other users workloads
+
+Dedicated node for each Client
+
+The new projects are created so that they include a LimitRange (which was unspecified)
+
+Alpha and Beta Corp users are confined to projects, and all new pods are deployed to customer dedicated nodes
+
+Self provisioning has been switched off for security reasons and two projects pre-created for Alpha and Beta respectively. Each project is only accessible by the relevant team. Each project has a node selector to run pods only on the allocated node.
+
+Logging into the web console say as: amy/amy will show the Alpha project, and similarly from brian/brian the beta project. These users only have rights within their pre-created project.
+
 
 
 
