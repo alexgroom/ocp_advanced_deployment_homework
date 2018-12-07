@@ -1,6 +1,6 @@
-= OpenShift Container Platform - Advanced Deployment - Homework Assignment
+= OpenShift Container Platform 3.11 - Advanced Deployment - Homework Assignment
 
-
+Course: FAB 2018 11 05 OpenShift 3.11
 
 == 1. Business Use Case
 Clearly all the consultants and OCP SSAs were on holiday this week since the AppDev SSA has been assigned to a telecommunications company called MitziCom! 
@@ -106,7 +106,7 @@ Logging into the web console say as: amy/amy will show the Alpha project, and si
 
 The files governing the installation are as follows:
 
-hosts - ansible definition file for Openshift installation
+hosts - ansible definition file for Openshift installation and targetting OpenShift 3.11 only
 
 homework.yaml - (My first ever) Ansible script driving the installation and subsequent deployment of projects and apps
 
@@ -123,5 +123,11 @@ nodejs_mongo_app.sh - installs the smoke test app and tests it
 
 set_labels.sh - set node labels and configures the environment for Alpha and Beta
 
+== 4. Dependancies
 
+Openshift 3.11
+
+https://github.com/wkulhanek/openshift-tasks project built with jboss-eap71-openshift:1.3
+
+nodejs-mongo-persistent - from the service catalog
 
